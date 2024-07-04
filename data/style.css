@@ -1,0 +1,214 @@
+/* style.css */
+
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2 {
+    color: #d2e4d5ef;
+    text-align: center;
+    text-shadow: #555;
+}
+
+h2 {
+    color: #252323ef;
+    text-align: center;
+    font-size: larger;
+    
+    
+
+}
+
+p {
+    color: #212020;
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: #4b9255;
+    color: rgb(255, 255, 255);
+  
+    padding-top: 5px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.navbar .nav-list {
+    list-style: none;
+    padding: auto;
+    margin: auto;
+}
+
+.navbar .nav-list .logo img {
+    height: 50px;
+    vertical-align: middle;
+}
+
+
+
+/* Control Panel Styles */
+.controls {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 20px;
+    
+}
+
+.controls.wrap {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+}
+
+.btn-tg {
+   
+    margin: 10px;
+    padding: 15px;
+    background-color: rgb(245, 251, 246);
+    border: 2px solid #ccc;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: row;
+   
+}
+
+
+.label-title {
+    margin-right: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Switch Styles */
+.switch {
+    position: relative;
+    display: inline-block;
+    
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #0a7a1bef;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/* Signal Input Styles */
+.txt input {
+    padding: 5px;
+    font-size: 16px;
+}
+
+/* Sensor Data Styles */
+.sensor-data {
+    margin: 20px;
+    padding: 10px;
+    background-color: rgb(245, 251, 246);
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    
+   
+}
+
+.signal{
+    margin: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    margin: auto;
+   
+
+}
+
+/* Footer Styles */
+footer {
+    background-color: #4b9255;
+    color: white;
+    text-align: center;
+    padding: auto;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+   
+}
+
+.sensor-data.sensor-data-wrap{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+}
+
+.wrap{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.line {
+    background-color: rgb(221, 220, 220);
+    height: 120px;
+    width: 2px;
+    margin: auto ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+.pin-status{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    margin: auto;
+}

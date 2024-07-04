@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home Automation</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- <script src="jquery-3.7.0.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+</head>
+<body>
+    <!-- Your HTML content -->
+    <nav class="navbar background">
+        <ul class="nav-list">
+            <div class="logo">
+                <img src="logo.png">
+            </div>
+            <h1>Automation System</h1>
+        </ul>
+    </nav>
+    <div class="controls">
+        <div class="wrap">
+            <div class="btn-tg">
+                <b class="label-title">Bulb</b>
+                <label class="switch">
+                <input type="checkbox" id="bulb">
+                <span class="slider round"></span>
+                </label>
+            </div>
+            <div class="btn-tg">
+                <b class="label-title">A/C</b>
+                <label class="switch">
+                <input type="checkbox" id="ac">
+                <span class="slider round"></span>
+                </label>
+            </div>
+           <div class="btn-tg">
+                <b class="label-title">Light</b>
+                <label class="switch">
+                <input type="checkbox" id="light"> 
+                <span class="slider round"></span>
+                </label>
+           </div>
+           
+        </div>
+    </div>
+    <div class="sensor-data">
+        <div class="wrap">
+        <h2>Sensor Data</h2>
+        <div class="sensor-data-wrap">
+            <span class="ds-labels">Temperature Celsius</span> 
+            <span id="temperaturec">%TEMPERATUREC%</span>
+            <sup class="units">&deg;C</sup></p>
+            <span class="ds-labels">Temperature Fahrenheit</span>
+            <span id="temperaturef">%TEMPERATUREF%</span>
+            <sup class="units">&deg;F</sup></p>
+        </div>
+        </div>
+        <div class="line"></div>
+        <div class="pin-status">
+            <h2>Switch Status</h2>
+            <p>Switch 1: <span id="status35">N/A</span></p>
+            <p>Switch 2: <span id="status36">N/A</span></p>
+        </div>
+    
+    </div>
+    
+    <footer class="background">
+        <p class="text-footer">
+            Copyright ©-All rights are reserved
+        </p>
+    </footer>
+    <script>
+        $( "#bulb" ).on( "click", function() {
+            var bulb_c = $("#bulb").is(":checked");
+            var url = 'bulb-' + bulb_c;
+            $.ajax({
+                url : url,
+                type : 'GET',
+                success : function(data) {              
+                    console.log('button clicked!');
+                }
+            });
+        });
+        $( "#ac" ).on( "click", function() {
+            var ac_c = $("#ac").is(":checked");
+            var url = 'ac-' + ac_c;
+            $.ajax({
+                url : url,
+                type : 'GET',
+                success : function(data) {              
+                    console.log('button clicked!');
+                }
+            });
+        });
+        $( "#light" ).on( "click", function() {
+            var light_c = $("#light").is(":checked");
+            var url = 'light-' + light_c;
+            $.ajax({
+                url : url,
+                type : 'GET',
+                success : function(data) {              
+                    console.log('button clicked!');
+                }
+            });
+        });
+
+        setInterval(function ( ) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+              if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("temperaturec").innerHTML = this.responseText;
+              }
+            };
+            xhttp.open("GET", "/temperaturec", true);
+            xhttp.send();
+          }, 10000) ;
+          setInterval(function ( ) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+              if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("temperaturef").innerHTML = this.responseText;
+              }
+            };
+            xhttp.open("GET", "/temperaturef", true);
+            xhttp.send();
+          }, 10000) ;
+        
+          
+
+          function fetchPinStatus() {
+            $.ajax({
+                url: '/pin-status',
+                type: 'GET',
+                success: function(data) {
+                    $('#status35').text(data.status35);
+                    $('#status36').text(data.status36);
+                },
+                error: function(xhr, status, error) {
+                    console.error("Failed to fetch pin status:", status, error);
+                }
+            });
+        }
+
+        setInterval(fetchPinStatus, 5000);
+
+          $(document).ready(function() {
+            fetchPinStatus();   // Fetch initial pin status
+        });
+
+    </script>
+</body>
+</html>
