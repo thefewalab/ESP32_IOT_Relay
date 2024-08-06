@@ -40,6 +40,7 @@ Arduino Setup
    
 2. Upload Files to ESP32:
    - Install the LittleFS plugin for the Arduino IDE if you haven’t already.
+   - You can install the library following this tutorial: https://randomnerdtutorials.com/esp32-littlefs-arduino-ide/
    - Create a folder named `data` in your sketch directory.
    - Place `index.html`, `style.css`, and `jquery-3.7.0.min.js` in the `data` folder.
    - Upload the files to the ESP32 by selecting `Tools` > `ESP32 LittleFS Data    Upload`.
